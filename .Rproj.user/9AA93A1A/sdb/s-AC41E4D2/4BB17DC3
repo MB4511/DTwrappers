@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# Internal function to perform the following steps:\n# 1) checks that dt.name refers to an object that exists\n# 2) checks that dt.name refers to an object that is a data.frame or data.table\n# 3) Converts the object to a data.table if it is not already.\n# 4) Returns a status of TRUE if the data was originally a data.table and FALSE if it was a data.frame.  This allows us to later reconvert the data to its original format using revise.dt.status().\ncheck.dt.status <- function(dt.name, envir = .GlobalEnv){\n  check.dt.exists(dt.name = dt.name, envir = envir)\n  \n  is.format.df <- is.data.frame(x = get(x = dt.name, envir = envir))\n  \n  if(is.format.df == FALSE){\n    stop(\"Error:  dt.name must refer to a variable that is a data.frame or data.table object.\")\n  }\n  \n  is.format.dt <- is.data.table(x = get(x = dt.name, envir = envir))\n  \n  if(is.format.dt == FALSE){\n    data.table::setDT(get(x = dt.name, envir = envir))\n  }\n  \n  return(is.format.dt)\n}\n\n# Internal function:  converts a data.table to a data.frame object if that was its original format (is.format.dt == FALSE).\nrevise.dt.status <- function(dt.name, envir, is.format.dt){\n  if(is.format.dt == FALSE){\n    data.table::setDF(get(x = dt.name, envir = envir))\n  }\n}\n",
+    "created" : 1607306980712.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "55212663",
+    "id" : "4BB17DC3",
+    "lastKnownWriteTime" : 1605114661,
+    "last_content_update" : 1605114661,
+    "path" : "~/Desktop/DTwrappers Draft/DTwrappers/R/check.dt.status.R",
+    "project_path" : "R/check.dt.status.R",
+    "properties" : {
+    },
+    "relative_order" : 24,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

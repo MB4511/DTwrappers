@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#'dt.remove.variables\n#'\n#' @description  A function to remove selected columns from a data.frame or data.table object.\n#' \n#' \n#' @return a `data.table` object. \n#' \n#' @param dt.name a character value specifying the name of a data.frame or data.table object to select data from.  A variable called dat should be referred to with dt.name = \"dat\" when using the function.\n#' @param the.variables  A character or numeric vector specifying the variables that we want to remove. For character vectors, only values that exist in the names of the data will be used.  For numeric vectors, only the values of unique(floor(sorting.variables)) that are in 1:ncol() of your data will be used.  Then these indices will be used to select column names from the data. \n#' @param return.as a character value specifying what output should be returned.  return.as = \"result\" provides the updated data.  return.as = \"code\" provides a data.table coding statement.  return.as = \"all\" provides a list object including both the resulting output and the code.\n#' @param envir a specification of the environment in which the data (referenced by dt.name) exists, with the global environment as the default value.#'\n#' @import data.table\n#' @source DTwrappers::create.dt.statement\n#' @source DTwrappers::eval.dt.statement\n#' @examples\n#' \n#' @export\ndt.remove.variables <- function(dt.name, the.variables, return.as = \"result\", envir = .GlobalEnv, ...) {\n  \n  require(data.table)\n  is.format.dt <- check.dt.status(dt.name = dt.name, envir = envir)\n  \n  all.variable.names <- names(x = get(dt.name))\n  \n  if(is.numeric(the.variables) == TRUE){\n    the.indices <- unique(floor(the.variables))\n    \n    the.variables <- all.variable.names[the.indices[the.indices %in% 1:ncol(x = get(x = dt.name, envir = envir))]]\n  }\n  \n  the.variables <- the.variables[the.variables %in% names(get(x = dt.name, envir = envir))]\n  num.variables <- length(the.variables)\n  if(num.variables == 0){\n    j.statement <- NULL\n  }\n  if(num.variables == 1){\n    j.statement <- sprintf(\"%s := NULL\", add.backtick(x = the.variables))\n  }\n  if(num.variables > 1){\n    j.statement <- sprintf(\"c(%s) := NULL\", paste(sprintf(\"'%s'\", the.variables), collapse = \", \"))\n  }\n  \n  the.statement <- create.dt.statement(dt.name = dt.name, j.statement = j.statement)\n  \n  res <- eval.dt.statement(the.statement = the.statement, return.as = return.as, envir = .GlobalEnv)\n  \n  if(return.as == \"all\"){\n    res$result <- res$result[]\n  }\n  if(!(return.as %in% c(\"all\", \"code\"))){\n    res <- res[]\n  }\n  \n  revise.dt.status(dt.name = dt.name, envir = envir, is.format.dt = is.format.dt)\n  \n  return(res)\n}\n",
+    "created" : 1607302544249.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1957813528",
+    "id" : "F1D2B874",
+    "lastKnownWriteTime" : 1605732585,
+    "last_content_update" : 1605732585,
+    "path" : "~/Desktop/DTwrappers Draft/DTwrappers/R/dt.remove.variables.R",
+    "project_path" : "R/dt.remove.variables.R",
+    "properties" : {
+    },
+    "relative_order" : 19,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#' Takes a numeric vector and produces a statement with a more compact representation.  For instance, c(1,2,3,4) would become '1:4' and c(1:3, 4:6) could become '1:6'.\n\n#' @param x a numeric vector\nreduce.vector.expression <- function(x){\n  \n  x <- sort(x = x, decreasing = FALSE)\n  len <- length(x)\n  y <- c(1 + x[1], 1 + x[1:(len-1)])\n  \n  starting.points <- which(x != y)\n  num.starting.points <- length(starting.points)\n  \n  if(num.starting.points == 1){\n    ending.points <- len\n  }\n  if(num.starting.points > 1){\n    ending.points <- c(starting.points[2:num.starting.points] - 1, len)\n  }\n  formatted.starting.points <- ifelse(test = x[starting.points] < 0, yes = sprintf(\"(%s)\", x[starting.points]), no = as.character(x[starting.points]))\n  formatted.ending.points <- ifelse(test = x[ending.points] < 0, yes = sprintf(\"(%s)\", x[ending.points]), no = as.character(x[ending.points]))\n    \n  the.pieces <- sprintf(\"%s:%s\", formatted.starting.points, formatted.ending.points)\n  \n  the.pieces[formatted.starting.points == formatted.ending.points] <- formatted.starting.points[formatted.starting.points == formatted.ending.points]\n  \n  \n  num.pieces <- length(the.pieces)\n  if(num.pieces == 1){\n    res <- sprintf(\"%s\", the.pieces)\n  }\n  if(num.pieces > 1){\n    res <- sprintf(\"c(%s)\", paste(the.pieces, collapse = \", \"))\n  }\n  \n  return(res)\n}\n",
+    "created" : 1606084737827.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2281037480",
+    "id" : "D2797DED",
+    "lastKnownWriteTime" : 1605192680,
+    "last_content_update" : 1605192680,
+    "path" : "~/Desktop/DTwrappers Draft/reduce.vector.expression.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 9,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

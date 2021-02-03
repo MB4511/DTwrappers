@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(devtools)\n\ndevtools::document()\n\ndevtools::check()",
+    "created" : 1607301872321.000,
+    "dirty" : true,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "911257618",
+    "id" : "2A749FBD",
+    "lastKnownWriteTime" : 4294967302,
+    "last_content_update" : 1607302700291,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 13,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

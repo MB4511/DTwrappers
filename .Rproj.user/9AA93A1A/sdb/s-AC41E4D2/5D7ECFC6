@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# description:  Evaluates data.table coding statements.  The user may select whether the results of the calculation, the code, or both items are returned.  When the coding statement includes programatic designs with the get() or eval() function, an option is provided to optimize the performance of the code through efficient translations using getDTeval().\n\n# the.statement:  a character value or an expression of a data.table coding statement.  For example, a valid character input would be the.statement = \"dt[Age < 50, mean(x = Satisfaction, na.rm = TRUE), keyby = \"Region\"]\" as a parameter.  A character input will be parsed into an expression, or the.statement can be directly specified as an expression.  Alternatively, such a statement can be entered as an expression.  For example, use expression(dt[Age < 50, mean(x = Satisfaction, na.rm = TRUE), keyby = \"Region\"])\n\n# return.as:  a character value stating what should be returned.  When return.as = \"result\", the calculation is evaluated.  When return.as = \"code\", then the translated coding statement is provided.  When return.as = \"all\", then a list is returned that includes both the result and the code.  If the code was translated during evaluation, then both the code and the original.statement are returned.\n\n# eval.type:  a character value stating whether the coding statement should be evaluated in its current form (eval.type = \"as.is\") or have its called to get() and eval() translated (eval.type = \"optimized\", the default setting).\n\n# envir:  The environment in which the calculation takes place, with the global environment .GlobalEnv set as the default.\n\n# Note: This function directly evaluates a data.table coding statement.  To construct such a statement, see create.dt.statement.\n\neval.dt.statement <- function(the.statement, return.as = \"result\", envir = .GlobalEnv, ...){\n  \n  value.code <- \"code\"\n  value.all <- \"all\"\n  \n  if(return.as == value.code){\n    res <- the.statement\n  }\n  if(return.as != value.code){\n    the.result <- eval(expr = parse(text = the.statement), envir = envir, ...)\n    if(return.as == value.all){\n      res <- list(result = the.result, code = the.statement)\n    }\n    if(return.as != value.all){\n      res <- the.result\n    }\n  }\n  \n  return(res)\n}\n",
+    "created" : 1606084651878.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "976899334",
+    "id" : "5D7ECFC6",
+    "lastKnownWriteTime" : 1604588797,
+    "last_content_update" : 1604588797,
+    "path" : "~/Desktop/DTwrappers Draft/eval.dt.statement.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

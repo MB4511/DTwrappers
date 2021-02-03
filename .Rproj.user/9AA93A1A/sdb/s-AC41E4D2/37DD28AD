@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "Package: DTwrappers\nTitle: Wrapper functions for the data.table package \nVersion: 0.0.1\nAuthors@R: c(\n    person(\"David\", \"Shilane\", , \"david.shilane@columbia.edu\", c(\"aut\")),\n    person(\"Mayur\", \"Bansal\", , \"mb4511@columbia.edu\", c(\"ctb\")),\n    person(\"Anderson\", \"Nelson\", , \"an2908@columbia.edu\", c(\"ctb\")),\n    person(\"Caffrey\", \"Lee\", , \"cl3802@columbia.edu\", c(\"ctb\",\"cre\")),\n    person(\"Zichen\", \"Huang\", , \"zh2380@columbia.edu\", c(\"ctb\"))\n    )\nDepends: R (>= 3.1.0)\nDescription: DTwrappers provides wrapper functions that aim to simplify the syntax of the data.table package.  The wrapper functions facilitate usage of a range of data.table's core features.  Furthermore, the methods are also built to demonstrate how to write effective data.table statements for educational purposes in a wide variety of settings.\nLicense: GPL-3 \nEncoding: UTF-8\nLazyData: true\nRoxygenNote: 7.1.1\nSuggests: \n    knitr,\n    rmarkdown,\n    covr,\n    testthat (>= 2.1.0)\nVignetteBuilder: knitr\nImports: \n    data.table\n",
+    "created" : 1607301985906.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3112824099",
+    "id" : "37DD28AD",
+    "lastKnownWriteTime" : 1607302023,
+    "last_content_update" : 1607302023,
+    "path" : "~/Desktop/DTwrappers Draft/DTwrappers/DESCRIPTION",
+    "project_path" : "DESCRIPTION",
+    "properties" : {
+    },
+    "relative_order" : 15,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "dcf"
+}

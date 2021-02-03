@@ -1,0 +1,24 @@
+"0","dt.count.rows(dt.name = ""dat"", count.name = ""Total Rows"", return.as = ""all"")"
+"2","Loading required package: data.table
+"
+"2","data.table 1.12.8 using 2 threads (see ?getDTthreads).  Latest news: r-datatable.com
+"
+"1","$result
+"
+"1","  "
+"1"," Total Rows"
+"1","
+1:"
+"1","        150"
+"1","
+"
+"1","
+"
+"1","$code
+"
+"1","[1]"
+"1"," ""dat[, .(`Total Rows` = .N)]"""
+"1","
+"
+"1","
+"

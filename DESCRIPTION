@@ -1,0 +1,24 @@
+Package: DTwrappers
+Title: Wrapper functions for the data.table package 
+Version: 0.0.1
+Authors@R: c(
+    person("David", "Shilane", , "david.shilane@columbia.edu", c("aut")),
+    person("Mayur", "Bansal", , "mb4511@columbia.edu", c("ctb")),
+    person("Anderson", "Nelson", , "an2908@columbia.edu", c("ctb")),
+    person("Caffrey", "Lee", , "cl3802@columbia.edu", c("ctb","cre")),
+    person("Zichen", "Huang", , "zh2380@columbia.edu", c("ctb"))
+    )
+Depends: R (>= 3.1.0)
+Description: DTwrappers provides wrapper functions that aim to simplify the syntax of the data.table package.  The wrapper functions facilitate usage of a range of data.table's core features.  Furthermore, the methods are also built to demonstrate how to write effective data.table statements for educational purposes in a wide variety of settings.
+License: GPL-3 
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown,
+    covr,
+    testthat (>= 2.1.0)
+VignetteBuilder: knitr
+Imports: 
+    data.table

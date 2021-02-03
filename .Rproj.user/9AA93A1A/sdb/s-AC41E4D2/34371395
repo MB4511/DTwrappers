@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "check.dt.exists <- function(dt.name, envir = .GlobalEnv){\n  if(exists(x = dt.name, envir = envir) == FALSE){\n    stop(sprintf(\"There is no variable with the name '%s' in the selected environment.  Please set dt.name to a character value with the name of a data.frame variable that is loaded in memory.\", dt.name))\n  }\n}\n",
+    "created" : 1606084514230.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2742541106",
+    "id" : "34371395",
+    "lastKnownWriteTime" : 1604890166,
+    "last_content_update" : 1604890166,
+    "path" : "~/Desktop/DTwrappers Draft/check.dt.exists.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

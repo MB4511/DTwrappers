@@ -1,0 +1,38 @@
+"0","## linear regression (no grouping allowed)"
+"0","dt.calculate(dt.name = ""dat"", the.functions = ""lm"", other.params = ""formula = Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width"", return.as = ""all"", individual.variables = F, output.as.table = F)"
+"1","$result
+"
+"1","
+Call:
+"
+"1","lm(formula = Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width, 
+    data = .SD)"
+"1","
+
+"
+"1","Coefficients:
+"
+"1"," (Intercept)  "
+"1"," Sepal.Width  "
+"1","Petal.Length  "
+"1"," Petal.Width  "
+"1","
+"
+"1","      1.8560  "
+"1","      0.6508  "
+"1","      0.7091  "
+"1","     -0.5565  "
+"1","
+"
+"1","
+"
+"1","
+"
+"1","$code
+"
+"1","[1]"
+"1"," ""dat[, lm(.SD, formula = Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width)]"""
+"1","
+"
+"1","
+"
