@@ -42,16 +42,33 @@ dt.calculate(
 \item{sortby.group}{A logical value specifying whether the grouping should be sorted (TRUE, the default value) or as is (FALSE).}
 
 \item{other.params}{A character value specifying any additional parameters needed to call the.functions.
-For instance, if the.functions = "mean", and you would like to remove missing values, then specifying 
-other.params = "na.rm = TRUE" as a character would suffice.  Multiple parameters can be specified with comma 
-separation, e.g. other.params = "trim = 1, na.rm = TRUE".  Note that all of the parameters supplied must 
+For instance, if the.functions = "mean", and you would like to remove missing values, then specifying
+other.params = "na.rm = TRUE" as a character would suffice.  Multiple parameters can be specified with comma
+separation, e.g. other.params = "trim = 1, na.rm = TRUE".  Note that all of the parameters supplied must
 apply to all of the.functions}
 
-\item{add.function.name}{A logical value specifying whether the name of the function applied should be appended to 
+\item{table.format}{specify the format of the table depending on the desired output i.e. long or wide}
+
+\item{add.function.name}{A logical value specifying whether the name of the function applied should be appended to
 the column names in the resulting table.  Only applies if the.functions is of length 1.}
+
+\item{individual.variables}{boolean specifying if variables are grouped or individual}
+
+\item{output.as.table}{boolean to specify if output should be a table or not}
+
+\item{return.as}{a character value specifying what output should be returned.  return.as = "result" provides the table of counts.  return.as = "code" provides a data.table coding statement that can generate the table of counts.  return.as = "all" provides a list containing both the resulting table and the code.}
+
+\item{envir}{the environment in which the code would be evaluated; .GlobalEnv by default.}
 
 \item{...}{additional arguments to be passed}
 }
 \description{
 This function allows a user to apply one or more functions to all of the specified variables in a data.frame or data.table object.  It is built as a wrapper function of data.table's method of applying functions to variables while allowing for filtering and grouping steps.  This allows a user to easily calculate many results, e.g. the.functions = c("mean", "median", "sd") on multiple columns, e.g. the.variables = c("Age", "Income") while also filtering and grouping the data.  Options also exist to return a data.table coding statement (result = "code") for educational purposes or both the result and the code together (result = "all").  For examples, please see the vignette.
+}
+\examples{
+n <- nrow(iris)
+dat <- data.table::as.data.table(x = iris[sample(x = 1:n, size = n, replace = FALSE),])
+dt.calculate(dt.name = "dat", the.variables = c("Sepal.Length"),
+the.functions = c("mean", "sd"), return.as = "all")
+
 }

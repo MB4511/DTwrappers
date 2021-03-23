@@ -40,6 +40,8 @@ dt.define.variable(
 \item{return.as}{a character value specifying what output should be returned.  return.as = "result" provides the table of counts.  return.as = "code" provides a data.table coding statement that can generate the table of counts.  return.as = "all" provides both the resulting table and the code.}
 
 \item{envir}{the environment in which the code would be evaluated; .GlobalEnv by default.}
+
+\item{...}{other additional arguments if needed}
 }
 \description{
 This method allows a user to add a new variable to an existing data.frame or data.table.  It can also be used to update previously defined variables.  It is built as a wrapper function of data.table's method of defining new variables by reference.  The new values can be stated either through a statement of the calculation or by directly providing a vector of values.  These updates can also be performed on a subset of the data by incorporating a filter.  Options also exist to return a data.table coding statement (result = "code") for educational purposes or both the result and the code together (result = "all").  For examples, please see the vignette.

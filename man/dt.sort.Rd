@@ -26,7 +26,15 @@ dt.sort(
 \item{return.as}{a character value specifying what output should be returned.  return.as = "result" provides the updated data.  return.as = "code" provides a data.table coding statement.  return.as = "all" provides a list object including both the resulting output and the code.}
 
 \item{envir}{a specification of the environment in which the data (referenced by dt.name) exists, with the global environment as the default value.}
+
+\item{...}{additional arguments if required}
 }
 \description{
 This function sorts the rows of a data.frame or data.table based on selected columns.  It is built as a light wrapper function of data.table's setorderv() function.  Options also exist to return a data.table coding statement (result = "code") for educational purposes or both the result and the code together (result = "all").  For examples, please see the vignette.
+}
+\examples{
+n <- nrow(iris)
+dat <- data.table::as.data.table(x = iris[sample(x = 1:n, size = n, replace = FALSE),])
+dt.sort(dt.name = "dat", sorting.variables = c("Species", "Sepal.Length"),
+sort.increasing = TRUE, return.as = "all")
 }

@@ -3,9 +3,9 @@ Title: Wrapper functions for the data.table package
 Version: 0.0.1
 Authors@R: c(
     person("David", "Shilane", , "david.shilane@columbia.edu", c("aut")),
-    person("Mayur", "Bansal", , "mb4511@columbia.edu", c("ctb")),
+    person("Mayur", "Bansal", , "mb4511@columbia.edu", c("ctb","cre")),
     person("Anderson", "Nelson", , "an2908@columbia.edu", c("ctb")),
-    person("Caffrey", "Lee", , "cl3802@columbia.edu", c("ctb","cre")),
+    person("Caffrey", "Lee", , "cl3802@columbia.edu", c("ctb")),
     person("Zichen", "Huang", , "zh2380@columbia.edu", c("ctb"))
     )
 Depends: R (>= 3.1.0)

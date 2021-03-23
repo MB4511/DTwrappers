@@ -25,6 +25,8 @@ dt.remove.variables(
 \item{return.as}{a character value specifying what output should be returned.  return.as = "result" provides the updated data.  return.as = "code" provides a data.table coding statement.  return.as = "all" provides a list object including both the resulting output and the code.}
 
 \item{envir}{a specification of the environment in which the data (referenced by dt.name) exists, with the global environment as the default value.#'}
+
+\item{...}{additional arguments if required}
 }
 \value{
 a `data.table` object.
@@ -33,5 +35,10 @@ a `data.table` object.
 A function to remove selected columns from a data.frame or data.table object.
 }
 \examples{
+n <- nrow(iris)
+dat <- data.table::as.data.table(x = iris[sample(x = 1:n, size = n, replace = FALSE),])
+dt.remove.variables(dt.name = "dat", the.variables = c("Category", "setosa_sl_below_5"),
+return.as = "all")
+
 
 }

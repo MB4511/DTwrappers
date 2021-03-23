@@ -9,13 +9,21 @@
 #' @param missing.variables a character value of either "first" or "last" specifying where rows with missing values in the.variables should be included.  Using "first" will place those rows at the beginning of the table, while "last" would place them in the end of the table.
 #' @param return.as a character value specifying what output should be returned.  return.as = "result" provides the updated data.  return.as = "code" provides a data.table coding statement.  return.as = "all" provides a list object including both the resulting output and the code.
 #' @param envir a specification of the environment in which the data (referenced by dt.name) exists, with the global environment as the default value.
+#' @param ... additional arguments if required
+#' @examples
+#' n <- nrow(iris)
+#' dat <- data.table::as.data.table(x = iris[sample(x = 1:n, size = n, replace = FALSE),])
+#' dt.sort(dt.name = "dat", sorting.variables = c("Species", "Sepal.Length"),
+#' sort.increasing = TRUE, return.as = "all")
+#' @import data.table
+#' @export
 
 
 dt.sort <- function(dt.name, sorting.variables, sort.increasing = TRUE, missing.variables = c("first", "last"), return.as = "result", envir = .GlobalEnv, ...){
-  
-  require(data.table)
+
+  #require(data.table)
   is.format.dt <- check.dt.status(dt.name = dt.name, envir = envir)
-  
+
   na.last <- "FALSE"
 
   if(is.character(missing.variables) == TRUE & missing.variables[1] == "last"){
@@ -27,38 +35,38 @@ dt.sort <- function(dt.name, sorting.variables, sort.increasing = TRUE, missing.
     the.indices <- unique(floor(sorting.variables))
     sorting.variables <- names(x = get(x = dt.name, envir = envir))[the.indices[the.indices %in% 1:ncol(x = get(x = dt.name, envir = envir))]]
   }
-  
+
   cols.statement <- sprintf("%s", paste(sprintf("'%s'", sorting.variables), collapse = ", "))
-  
+
   num.sorting.variables <- length(sorting.variables)
   if(length(sorting.variables) > 1){
     cols.statement <- sprintf("c(%s)", cols.statement)
   }
-  
+
   if(is.numeric(sort.increasing)){
     sort.increasing <- (sort.increasing == 1)
   }
   if(is.logical(sort.increasing) == FALSE){
     sort.increasing <- TRUE
   }
-  
+
   num.unique.sort.increasing <- length(unique(sort.increasing))
   len.sort.increasing <- length(sort.increasing)
-  
+
   if(len.sort.increasing < length(sorting.variables) | num.unique.sort.increasing == 1){
     sort.increasing <- sort.increasing[1]
   }
-  
+
   ordering.statement <- sprintf("%s", paste(sprintf("%s", -1 + 2 * as.numeric(sort.increasing)), collapse = ", "))
   if(length(sort.increasing) > 1){
     ordering.statement <- sprintf("c(%s)", ordering.statement)
   }
-  
-  the.statement <- sprintf("setorderv(x = %s, cols = %s, order = %s, na.last = %s)", dt.name, cols.statement, ordering.statement, na.last)
-  
+
+  the.statement <- sprintf("data.table::setorderv(x = %s, cols = %s, order = %s, na.last = %s)", dt.name, cols.statement, ordering.statement, na.last)
+
   res <- eval.dt.statement(the.statement = the.statement, return.as = return.as, envir = envir)
-  
+
   revise.dt.status(dt.name = dt.name, envir = envir, is.format.dt = is.format.dt)
-  
+
   return(res)
 }
